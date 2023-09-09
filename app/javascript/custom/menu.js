@@ -1,11 +1,14 @@
 // Menu manipulation
 
 // Add toggle listeners to listen for clicks.
+let turboEvents = ["turbo:load", "turbo:render"]
 
-document.addEventListener("turbo:load", function() {
-  toggleListener("hamburger", "navbar-menu", "collapse");
-  toggleListener("account", "dropdown-menu", "active");
-});
+turboEvents.forEach((turbo) => {
+  document.addEventListener(turbo, function() {
+    toggleListener("hamburger", "navbar-menu", "collapse");
+    toggleListener("account", "dropdown-menu", "active");
+  });
+})
 
 function toggleListener(selectedId, menuId, toggleClass) {
   let selectedElement = document.querySelector(`#${selectedId}`);
